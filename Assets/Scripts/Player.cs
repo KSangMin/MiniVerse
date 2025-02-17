@@ -7,11 +7,14 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Animator _animator;
+    Rigidbody2D _rb;
+
+    [SerializeField][Range(0, 10)] int speed = 4;
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
-        if (_animator == null) Debug.Log("애니메이터 없음");
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void OnMove(InputValue value)
@@ -25,5 +28,7 @@ public class Player : MonoBehaviour
         _animator.SetFloat("dX", dir.x);
         _animator.SetFloat("dY", dir.y);
         _animator.SetBool("isMoving", dir != Vector2.zero);
+        
+        _rb.velocity = dir * speed;
     }
 }
