@@ -15,7 +15,6 @@ public class PlaneGameManager : Singleton<PlaneGameManager>
     public void AddScore(int s)
     {
         _score += s;
-        Debug.Log(_score);
         PlaneUIManager.Instance.UpdateScore(_score);
     }
 
@@ -29,8 +28,8 @@ public class PlaneGameManager : Singleton<PlaneGameManager>
     public void RestartGame()
     {
         PlaneUIManager.Instance.SetStartUI();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         _score = 0;
         PlaneUIManager.Instance.UpdateScore(_score);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

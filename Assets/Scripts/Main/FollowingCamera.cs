@@ -15,6 +15,8 @@ public class FollowingCamera : MonoBehaviour
 
     void Start()
     {
+        transform.position = GameManager.Instance.playerPos;
+
         _minBound = minTransform.position;
         _maxBound = maxTransform.position;
     }
