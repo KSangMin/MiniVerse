@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     Rigidbody2D _rb;
 
     [SerializeField][Range(0, 10)] int speed = 4;
+    [Range(0, 1f)] public float interactRange = 0.52f;
 
     private void Awake()
     {
@@ -30,5 +32,29 @@ public class Player : MonoBehaviour
         _animator.SetBool("isMoving", dir != Vector2.zero);
         
         _rb.velocity = dir * speed;
+    }
+
+    void OnInteract()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.15f), interactRange);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Interactable"))
+            {
+                Interactable interactable = collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                    break;
+                }
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0.15f), interactRange);
     }
 }
