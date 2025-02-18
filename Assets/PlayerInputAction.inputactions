@@ -147,6 +147,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Plane",
+            "id": "9490f085-34d1-4955-966a-a37fa2cbc44b",
+            "actions": [
+                {
+                    "name": "Flap",
+                    "type": "Value",
+                    "id": "4e6be451-6df7-4107-abe6-13d826235c98",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "66114a8d-f8c0-408e-9267-8ac633e090c2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bba5d90-8a2a-4b56-bc6a-f6675f3f4c85",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
