@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlaneUIManager : Singleton<PlaneUIManager>
 {
+    public TextMeshProUGUI timerText;
     public GameObject gameoverPanel;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI restartText;
+    public Button restartButton;
+    public Button exitButton;
 
     public override void Awake()
     {
@@ -17,20 +21,23 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
 
     void Start()
     {
-        gameoverPanel.SetActive(false);
-        restartText.gameObject.SetActive(false);
+        SetStartUI();
+        exitButton.onClick.AddListener(() => SceneManager.LoadScene("Main"));
+        restartButton.onClick.AddListener(() => PlaneGameManager.Instance.RestartGame());
     }
 
     public void SetGameOverUI()
     {
         gameoverPanel.SetActive(true);
-        restartText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
     }
 
-    public void Restart()
+    public void SetStartUI()
     {
         gameoverPanel.SetActive(false);
-        restartText.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
     }
 
     public void UpdateScore(int score)

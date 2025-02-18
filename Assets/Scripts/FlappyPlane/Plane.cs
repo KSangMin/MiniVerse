@@ -10,31 +10,28 @@ public class Plane : MonoBehaviour
 
     public float jumpForce = 6f;
     private bool _isDead = false;
-    private float _deathCool = 0f;
 
     public bool godMode = false;
+
+    public bool isStart = false;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
-        _deathCool = 0.01f;
-    }
-    private void Update()
-    {
-        if (_deathCool > 0f)
-        {
-            _deathCool -= Time.deltaTime;
-            Debug.Log(_deathCool);
-        }
+
+        StartCoroutine(StartTimer());
     }
 
     private void FixedUpdate()
     {
         if (_isDead) return;
 
-        float angle = Mathf.Clamp(_rb.velocity.y * 10f, -90, 90);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (isStart)
+        {
+            float angle = Mathf.Clamp(_rb.velocity.y * 10f, -90, 90);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,7 +40,6 @@ public class Plane : MonoBehaviour
         if (_isDead) return;
 
         _isDead = true;
-        _deathCool = 1f;
 
         _animator.SetBool("isDead", true);
 
@@ -52,19 +48,26 @@ public class Plane : MonoBehaviour
 
     public void OnFlap(InputAction.CallbackContext context)
     {
-        if (_deathCool <= 0f && context.started)
+        if (isStart && context.started)
         {
-            if (_isDead)
-            {
-                PlaneGameManager.Instance.RestartGame();
-            }
-            else
-            {
-                Vector3 velocity = _rb.velocity;
-                velocity.y += jumpForce;
-                _rb.velocity = velocity;
-            }
-        }
-            
+            Vector3 velocity = _rb.velocity;
+            velocity.y += jumpForce;
+            _rb.velocity = velocity;
+        }  
+    }
+
+    public IEnumerator StartTimer()
+    {
+        _rb.gravityScale = 0;
+        yield return new WaitForSeconds(1f);
+        PlaneUIManager.Instance.timerText.text = "2";
+        yield return new WaitForSeconds(1f);
+        PlaneUIManager.Instance.timerText.text = "1";
+        yield return new WaitForSeconds(1f);
+        PlaneUIManager.Instance.timerText.text = "Start!";
+        _rb.gravityScale = 1;
+        isStart = true;
+        yield return new WaitForSeconds(1f);
+        PlaneUIManager.Instance.timerText.text = "";
     }
 }

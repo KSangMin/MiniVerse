@@ -22,13 +22,13 @@ public class PlaneGameManager : Singleton<PlaneGameManager>
     public void GameOver()
     {
         Debug.Log("게임오버");
+        PlayerPrefs.SetInt("PlaneHighScore", Mathf.Max(_score, PlayerPrefs.GetInt("PlaneHighScore", 0)));
         PlaneUIManager.Instance.SetGameOverUI();
     }
 
     public void RestartGame()
     {
-        PlaneUIManager.Instance.Restart();
-        PlayerPrefs.SetInt("PlaneHighScore", Mathf.Max(_score, PlayerPrefs.GetInt("PlaneHighScore", 0)));
+        PlaneUIManager.Instance.SetStartUI();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         _score = 0;
         PlaneUIManager.Instance.UpdateScore(_score);
