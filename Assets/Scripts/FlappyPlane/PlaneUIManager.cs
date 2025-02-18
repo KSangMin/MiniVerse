@@ -17,15 +17,6 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
 
     void Start()
     {
-        if(restartText == null)
-        {
-            Debug.Log("restartText NotFound");
-        }
-        if (scoreText == null)
-        {
-            Debug.Log("restartText NotFound");
-        }
-
         gameoverPanel.SetActive(false);
         restartText.gameObject.SetActive(false);
     }

@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class BGLooper : MonoBehaviour
 {
-    private int _bgCount = 5;
+    private int _bgCount = 3;
     private int _obsCount = 0;
     private Vector3 _lastPos = Vector3.zero;
 
     void Start()
     {
-        Obstacle[] obs = GameObject.FindObjectsOfType<Obstacle>();
+        Obstacle[] obs = FindObjectsOfType<Obstacle>();
         _lastPos= obs[0].transform.position;
         _obsCount = obs.Length;
-
-        for(int i = 0; i < _obsCount; i++)
-        {
-            _lastPos = obs[i].SetRandomPlace(_lastPos, _obsCount);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +32,7 @@ public class BGLooper : MonoBehaviour
         Obstacle o = collision.GetComponent<Obstacle>();
         if(o != null)
         {
-            _lastPos = o.SetRandomPlace(_lastPos, _obsCount);
+            _lastPos = o.SetRandomInterval(_lastPos, _obsCount);
         }
     }
 }

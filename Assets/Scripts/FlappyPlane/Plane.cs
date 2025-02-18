@@ -9,7 +9,6 @@ public class Plane : MonoBehaviour
     private Rigidbody2D _rb;
 
     public float jumpForce = 6f;
-    public float speed = 3f;
     private bool _isDead = false;
     private float _deathCool = 0f;
 
@@ -34,9 +33,6 @@ public class Plane : MonoBehaviour
     {
         if (_isDead) return;
 
-        Vector3 velocity = _rb.velocity;
-        velocity.x = speed;
-        _rb.velocity = velocity;
         float angle = Mathf.Clamp(_rb.velocity.y * 10f, -90, 90);
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : Background
 {
     public float maxY = 1.2f;
     public float minY = -1.2f;
@@ -15,10 +15,16 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4f;
 
-    public Vector2 SetRandomPlace(Vector2 lastPos, int count)
+    public override void Start()
     {
-        top.localPosition = new Vector2(0, Random.Range(minSize, maxSize) / 2);
-        bottom.localPosition = new Vector2(0, -Random.Range(minSize, maxSize) / 2);
+        base.Start();
+
+        SetRandomHeight();
+    }
+
+    public Vector2 SetRandomInterval(Vector2 lastPos, int count)
+    {
+        SetRandomHeight();
 
         Vector2 pos = lastPos + new Vector2(widthPadding, 0);
         pos.y = Random.Range(minY, maxY);
@@ -26,6 +32,12 @@ public class Obstacle : MonoBehaviour
         transform.position = pos;
 
         return pos;
+    }
+
+    public void SetRandomHeight()
+    {
+        top.localPosition = new Vector2(0, Random.Range(minSize, maxSize) / 2);
+        bottom.localPosition = new Vector2(0, -Random.Range(minSize, maxSize) / 2);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
