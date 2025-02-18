@@ -28,6 +28,7 @@ public class PlaneGameManager : Singleton<PlaneGameManager>
     public void RestartGame()
     {
         PlaneUIManager.Instance.Restart();
+        PlayerPrefs.SetInt("PlaneHighScore", Mathf.Max(_score, PlayerPrefs.GetInt("PlaneHighScore", 0)));
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         _score = 0;
         PlaneUIManager.Instance.UpdateScore(_score);

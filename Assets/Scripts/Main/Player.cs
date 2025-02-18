@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Animator _animator;
     Rigidbody2D _rb;
 
+    Vector2 dir;
     [SerializeField][Range(0, 10)] int speed = 4;
     [Range(0, 1f)] public float interactRange = 0.52f;
 
@@ -19,10 +20,24 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        transform.position = GameManager.Instance.playerPos;
+    }
+
+    private void FixedUpdate()
+    {
+        if(dir.magnitude > 0)
+        {
+            Vector2 newPos = (Vector2)transform.position + dir * speed * Time.deltaTime;
+            _rb.MovePosition(newPos);
+        }
+    }
+
     void OnMove(InputValue value)
     {
-        Vector2 dir = value.Get<Vector2>().normalized;
-        if(dir != Vector2.zero)
+        dir = value.Get<Vector2>().normalized;
+        if (dir != Vector2.zero)
         {
             _animator.SetFloat("lastX", dir.x);
             _animator.SetFloat("lastY", dir.y);
@@ -30,8 +45,6 @@ public class Player : MonoBehaviour
         _animator.SetFloat("dX", dir.x);
         _animator.SetFloat("dY", dir.y);
         _animator.SetBool("isMoving", dir != Vector2.zero);
-        
-        _rb.velocity = dir * speed;
     }
 
     void OnInteract()
@@ -46,6 +59,7 @@ public class Player : MonoBehaviour
                 if (interactable != null)
                 {
                     interactable.Interact();
+                    GameManager.Instance.playerPos = transform.position;
                     break;
                 }
             }

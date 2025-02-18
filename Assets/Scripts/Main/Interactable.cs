@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
 {
     public GameObject sign;
 
-    private void Start()
+    public virtual void Start()
     {
         sign.SetActive(false);
     }

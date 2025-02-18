@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sign: {fileID: 2009373081965289816}
   sceneName: FlappyPlane
+  GameName: Plane
+  hScoreText: {fileID: 3697967311517715504}
 --- !u!1 &3630027772804263943
 GameObject:
   m_ObjectHideFlags: 0
