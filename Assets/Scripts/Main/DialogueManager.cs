@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
+    public Transform player;
+
     public GameObject dlgPanel;
     public Image dlgImage;
     public TextMeshProUGUI nameText;
@@ -39,6 +41,9 @@ public class DialogueManager : Singleton<DialogueManager>
         _dialogue = npc.dialogue;
         dlgPanel.SetActive(true);
 
+        FollowingCamera.Instance.target = npc.transform;
+        FollowingCamera.Instance.cam.orthographicSize = 2.5f;
+
         StartCoroutine(ShowDialogue());
     }
 
@@ -58,6 +63,9 @@ public class DialogueManager : Singleton<DialogueManager>
 
     void EndDialogue()
     {
+        FollowingCamera.Instance.target = player.transform;
+        FollowingCamera.Instance.cam.orthographicSize = 5;
+
         dlgImage.sprite = null;
         nameText.text = null;
         dlgText.text = null;

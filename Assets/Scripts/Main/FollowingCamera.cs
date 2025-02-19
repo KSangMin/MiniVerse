@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowingCamera : MonoBehaviour
+public class FollowingCamera : Singleton<FollowingCamera>
 {
+    public Camera cam;
     public Transform target;
     public Transform minTransform;
     public Transform maxTransform;
@@ -13,9 +14,16 @@ public class FollowingCamera : MonoBehaviour
 
     [Range(1, 10)] public float cameraSpeed = 1.5f;
 
+    public override void Awake()
+    {
+        isGlobal = false;
+
+        base.Awake();
+    }
+
     void Start()
     {
-        transform.position = GameManager.Instance.playerPos;
+        cam.transform.position = GameManager.Instance.playerPos;
 
         _minBound = minTransform.position;
         _maxBound = maxTransform.position;
@@ -23,11 +31,11 @@ public class FollowingCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 cam = target.position;
+        Vector2 camPos = target.position;
 
-        cam.x = Mathf.Clamp(cam.x, _minBound.x, _maxBound.x);
-        cam.y = Mathf.Clamp(cam.y, _minBound.y, _maxBound.y);
+        camPos.x = Mathf.Clamp(camPos.x, _minBound.x, _maxBound.x);
+        camPos.y = Mathf.Clamp(camPos.y, _minBound.y, _maxBound.y);
 
-        transform.position = Vector2.Lerp(transform.position, cam, Time.deltaTime * cameraSpeed);
+        cam.transform.position = Vector2.Lerp(cam.transform.position, camPos, Time.deltaTime * cameraSpeed);
     }
 }
