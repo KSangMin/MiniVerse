@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5686828203104424583}
   - component: {fileID: 9061324071694694956}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: npcSprite
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,15 +73,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -382774176, guid: e7fe82f5d4579cb4e91b4f7872904a60, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 0.64, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!1 &2195131869740021704
@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: 
-  npcSprite: {fileID: 0}
+  npcSprite: {fileID: 9061324071694694956}
   dialogue: []

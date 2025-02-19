@@ -36,13 +36,13 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         isDialogueStarted = true;
 
-        dlgImage.sprite = npc.npcSprite;
+        dlgImage.sprite = npc.npcSprite.sprite;
         nameText.text = npc.npcName;
         _dialogue = npc.dialogue;
         dlgPanel.SetActive(true);
 
         FollowingCamera.Instance.target = npc.transform;
-        FollowingCamera.Instance.cam.orthographicSize = 2.5f;
+        FollowingCamera.Instance.cam.orthographicSize = 2;
 
         StartCoroutine(ShowDialogue());
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPC : Interactable
 {
     public string npcName;
-    public Sprite npcSprite;
+    public SpriteRenderer npcSprite;
     public List<string> dialogue = new List<string>();
 
     public override void Interact()

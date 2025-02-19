@@ -43,7 +43,17 @@ public class AvatarManager : Singleton<AvatarManager>
 
     void OnAvatar()
     {
-        ToggleAvatar();
+        TurnOffAvatar();
+    }
+
+    public void TurnOnAvatar()
+    {
+        avatarBackground.SetActive(true);
+    }
+
+    public void TurnOffAvatar()
+    {
+        avatarBackground.SetActive(false);
     }
 
     public void ToggleAvatar()
@@ -53,6 +63,11 @@ public class AvatarManager : Singleton<AvatarManager>
         if(avatarBackground.activeSelf == true)
         {
             ResetUI();
+
+        }
+        else
+        {
+            
         }
     }
 

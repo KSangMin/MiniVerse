@@ -203,7 +203,7 @@
                 {
                     "name": "Avatar",
                     "type": "Button",
-                    "id": "bb3130d4-098e-439f-8c4f-c193669270e5",
+                    "id": "6492fd5b-8936-4ffd-8adf-8775cd87b508",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
@@ -224,8 +224,8 @@
                 },
                 {
                     "name": "",
-                    "id": "187ba52c-b367-425f-8b6e-955b4102e3e6",
-                    "path": "<Keyboard>/tab",
+                    "id": "8667c57a-9cf5-4858-9518-85ed485469a8",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
