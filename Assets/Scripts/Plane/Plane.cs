@@ -68,6 +68,6 @@ public class Plane : MonoBehaviour
         _rb.gravityScale = 1;
         isStart = true;
         yield return new WaitForSeconds(1f);
-        PlaneUIManager.Instance.timerText.text = "";
+        PlaneUIManager.Instance.timerText.gameObject.SetActive(false);
     }
 }

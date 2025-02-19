@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Obstacle : Background
 {
-    public float maxY = 1.2f;
-    public float minY = -1.2f;
+    float maxY = 1.2f;
+    float minY = -1.2f;
 
     float minSize = 0.5f;
     float maxSize = 4f; 
@@ -26,7 +26,7 @@ public class Obstacle : Background
     {
         SetRandomHeight();
 
-        Vector2 pos = lastPos + new Vector2(widthPadding, 0);
+        Vector2 pos = lastPos;
         pos.y = Random.Range(minY, maxY);
 
         transform.position = pos;

@@ -10,13 +10,14 @@ public class Background : MonoBehaviour
     public virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.velocity = new Vector3(-speed, 0);
     }
 
     private void FixedUpdate()
     {
-        speed += Time.deltaTime / 10;
-        _rb.velocity = new Vector3(-speed, 0);
-        Debug.Log(speed);
+        if (PlaneGameManager.Instance.isStart)
+        {
+            speed += Time.deltaTime / 30;
+            _rb.velocity = new Vector3(-speed, 0);
+        }
     }
 }

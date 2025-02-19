@@ -8,9 +8,14 @@ using UnityEngine.UI;
 
 public class PlaneUIManager : Singleton<PlaneUIManager>
 {
+    public GameObject infoPanel;
+    public Button startButton;
+
     public TextMeshProUGUI timerText;
-    public GameObject gameoverPanel;
+
     public TextMeshProUGUI scoreText;
+
+    public GameObject gameoverPanel;
     public Button restartButton;
     public Button exitButton;
 
@@ -21,23 +26,29 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
 
     void Start()
     {
-        SetStartUI();
+        SetUIStart();
+        startButton.onClick.AddListener(GameStart);
         exitButton.onClick.AddListener(() => SceneManager.LoadScene("Main"));
-        restartButton.onClick.AddListener(() => PlaneGameManager.Instance.RestartGame());
+        restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
     }
 
-    public void SetGameOverUI()
+    public void SetUIGameOver()
     {
         gameoverPanel.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        exitButton.gameObject.SetActive(true);
     }
 
-    public void SetStartUI()
+    public void SetUIStart()
     {
+        infoPanel.SetActive(true);
+        timerText.gameObject.SetActive(false);
         gameoverPanel.SetActive(false);
-        restartButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(false);
+    }
+
+    public void GameStart()
+    {
+        PlaneGameManager.Instance.StartGame();
+        infoPanel.SetActive(false);
+        timerText.gameObject.SetActive(true);
     }
 
     public void UpdateScore(int score)
