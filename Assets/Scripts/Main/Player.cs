@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(dir.magnitude > 0)
+        if(!DialogueManager.Instance.isDialogueStarted && dir.magnitude > 0)
         {
             Vector2 newPos = (Vector2)transform.position + dir * speed * Time.deltaTime;
             _rb.MovePosition(newPos);
@@ -41,30 +41,38 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value)
     {
         dir = value.Get<Vector2>().normalized;
-        if (dir != Vector2.zero)
+
+        if (!DialogueManager.Instance.isDialogueStarted)
         {
-            _animator.SetFloat("lastX", dir.x);
-            _animator.SetFloat("lastY", dir.y);
+            if (dir != Vector2.zero)
+            {
+                _animator.SetFloat("lastX", dir.x);
+                _animator.SetFloat("lastY", dir.y);
+            }
+            _animator.SetFloat("dX", dir.x);
+            _animator.SetFloat("dY", dir.y);
+            _animator.SetBool("isMoving", dir != Vector2.zero);
         }
-        _animator.SetFloat("dX", dir.x);
-        _animator.SetFloat("dY", dir.y);
-        _animator.SetBool("isMoving", dir != Vector2.zero);
+        else _animator.SetBool("isMoving", false);
     }
 
-    void OnInteract()
+    void OnInteract(InputValue value)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.15f), interactRange);
-
-        foreach (Collider2D collider in colliders)
+        if (value.isPressed)
         {
-            if (collider.CompareTag("Interactable"))
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.15f), interactRange);
+
+            foreach (Collider2D collider in colliders)
             {
-                Interactable interactable = collider.GetComponent<Interactable>();
-                if (interactable != null)
+                if (collider.CompareTag("Interactable"))
                 {
-                    interactable.Interact();
-                    GameManager.Instance.playerPos = transform.position;
-                    break;
+                    Interactable interactable = collider.GetComponent<Interactable>();
+                    if (interactable != null)
+                    {
+                        interactable.Interact();
+                        GameManager.Instance.playerPos = transform.position;
+                        break;
+                    }
                 }
             }
         }

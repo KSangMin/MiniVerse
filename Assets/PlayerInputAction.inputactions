@@ -186,6 +186,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "730f4b67-6fec-436c-acee-1bc0a4443d41",
+            "actions": [
+                {
+                    "name": "Progress",
+                    "type": "Button",
+                    "id": "a59a4e3c-4a9d-40ba-9738-402fdbb29d09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dc2e1dc0-64b2-447e-acfe-059319f2031c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Progress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -5,33 +5,24 @@ using UnityEngine.SceneManagement;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public GameObject sign;
-
-    public virtual void Start()
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        sign.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")) 
-        { 
-            sign.SetActive(true); 
+        if (collision.CompareTag("Player"))
+        {
             collision.GetComponent<Player>().TurnOnInteractPanel();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            sign.SetActive(false);
             collision.GetComponent<Player>().TurnOffInteractPanel();
         }
     }
 
     public virtual void Interact()
     {
-        Debug.Log(gameObject.name + "상호작용함");
+
     }
 }

@@ -21,7 +21,9 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
 
     public override void Awake()
     {
-        SetInstance(gameObject);
+        isGlobal = false;
+
+        base.Awake();
     }
 
     void Start()
