@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField][Range(0, 10)] int speed = 4;
     [Range(0, 1f)] public float interactRange = 0.52f;
 
+
+    public GameObject inateractPanel;
+
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         transform.position = GameManager.Instance.playerPos;
+        inateractPanel.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -70,5 +74,15 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0.15f), interactRange);
+    }
+
+    public void TurnOnInteractPanel()
+    {
+        inateractPanel.SetActive(true);
+    }
+
+    public void TurnOffInteractPanel()
+    {
+        inateractPanel.SetActive(false);
     }
 }

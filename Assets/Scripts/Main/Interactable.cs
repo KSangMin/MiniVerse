@@ -14,12 +14,20 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) sign.SetActive(true);
+        if (collision.CompareTag("Player")) 
+        { 
+            sign.SetActive(true); 
+            collision.GetComponent<Player>().TurnOnInteractPanel();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        sign.SetActive(false);
+        if (collision.CompareTag("Player"))
+        {
+            sign.SetActive(false);
+            collision.GetComponent<Player>().TurnOffInteractPanel();
+        }
     }
 
     public virtual void Interact()
