@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     [SerializeField][Range(0, 10)] int speed = 4;
     [Range(0, 1f)] public float interactRange = 0.52f;
 
-
     public GameObject inateractPanel;
 
     private void Awake()
