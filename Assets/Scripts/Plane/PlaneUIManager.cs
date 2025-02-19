@@ -14,6 +14,7 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
     public TextMeshProUGUI timerText;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
 
     public GameObject gameoverPanel;
     public Button restartButton;
@@ -36,6 +37,7 @@ public class PlaneUIManager : Singleton<PlaneUIManager>
 
     public void SetUIGameOver()
     {
+        highScoreText.text = PlayerPrefs.GetInt("PlaneHighScore", 0).ToString();
         gameoverPanel.SetActive(true);
     }
 

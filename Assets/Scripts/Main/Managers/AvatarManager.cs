@@ -63,7 +63,6 @@ public class AvatarManager : Singleton<AvatarManager>
         if(avatarBackground.activeSelf == true)
         {
             ResetUI();
-
         }
         else
         {
