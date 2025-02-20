@@ -5,4 +5,6 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Vector3 playerPos;
+
+    public bool isSecond;
 }
