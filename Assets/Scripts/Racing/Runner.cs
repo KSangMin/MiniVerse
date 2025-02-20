@@ -15,7 +15,7 @@ public class Runner : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (RacingGameManager.Instance.isGameOver)
+        if (RacingGameManager.Instance.isGameStopped)
         {
             return;
         }

@@ -14,7 +14,7 @@ public class CarSpawner : MonoBehaviour
 
     void Update()
     {
-        if (RacingGameManager.Instance.isGameOver)
+        if (RacingGameManager.Instance.isGameStopped)
         {
             return;
         }

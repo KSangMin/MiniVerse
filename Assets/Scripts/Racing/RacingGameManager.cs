@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RacingGameManager : Singleton<RacingGameManager>
 {
-    public bool isGameOver = false;
+    public bool isGameStopped = false;
 
     public override void Awake()
     {
@@ -15,6 +15,6 @@ public class RacingGameManager : Singleton<RacingGameManager>
 
     public void GameOver()
     {
-        isGameOver = true;
+        isGameStopped = true;
     }
 }
