@@ -30,7 +30,7 @@ public class RacingGameManager : Singleton<RacingGameManager>
     public void GameOver()
     {
         isGameStopped = true;
-        PlayerPrefs.SetInt("RacingHighScore", (int)timeScore);
+        PlayerPrefs.SetInt("RacingHighScore", Mathf.Max(((int)timeScore), PlayerPrefs.GetInt("RacingHighScore", 0)));
         RacingUIManager.Instance.SetUIGameOver();
     }
 }
