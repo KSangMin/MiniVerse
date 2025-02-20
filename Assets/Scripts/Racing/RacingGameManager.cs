@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RacingGameManager : Singleton<RacingGameManager>
 {
     public bool isGameStopped = false;
+
+    public float timeScore;
 
     public override void Awake()
     {
@@ -13,8 +16,21 @@ public class RacingGameManager : Singleton<RacingGameManager>
         base.Awake();
     }
 
+    private void Update()
+    {
+        if (isGameStopped)
+        {
+            return;
+        }
+
+        timeScore += Time.deltaTime;
+        RacingUIManager.Instance.SetScore((int)timeScore);
+    }
+
     public void GameOver()
     {
         isGameStopped = true;
+        PlayerPrefs.SetInt("RacingHighScore", (int)timeScore);
+        RacingUIManager.Instance.SetUIGameOver();
     }
 }

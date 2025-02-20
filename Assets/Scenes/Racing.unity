@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameStopped: 0
+  timeScore: 0
 --- !u!4 &28369833
 Transform:
   m_ObjectHideFlags: 0
@@ -1113,7 +1114,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -329}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546274761
 MonoBehaviour:
@@ -1209,8 +1210,9 @@ GameObject:
   - component: {fileID: 558786354}
   - component: {fileID: 558786353}
   - component: {fileID: 558786352}
+  - component: {fileID: 558786356}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: RacingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1301,6 +1303,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &558786356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558786351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ec5b272b6c4d24790357012783487a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 2028126100}
+  infoPanel: {fileID: 1825125801}
+  scoreText: {fileID: 73918783}
+  highScoreText: {fileID: 61172119}
+  startButton: {fileID: 1712321240}
+  restartButton: {fileID: 1713141428}
+  exitButton: {fileID: 546274761}
 --- !u!1001 &582770414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1781,7 +1802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC7AC\uC2DC\uC791"
+  m_text: "\uB2E4\uC2DC \uB3C4\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5609f32b283740140ab386dfc02eb2f5, type: 2}
   m_sharedMaterial: {fileID: -7208957603741871262, guid: 5609f32b283740140ab386dfc02eb2f5, type: 2}
@@ -2702,7 +2723,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -97}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713141428
 MonoBehaviour:

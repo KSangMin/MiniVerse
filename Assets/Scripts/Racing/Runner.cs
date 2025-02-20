@@ -20,11 +20,21 @@ public class Runner : MonoBehaviour
             return;
         }
 
-        transform.position = Vector3.Lerp(transform.position, tracks[curId].position, 0.4f);
+        Transform target = tracks[curId];
+        transform.position = Vector3.Lerp(transform.position, target.position, 0.4f);
+
+        Vector2 distance = target.position - transform.position;
+        float angle = Mathf.Clamp((distance.x > 0 ? -distance.magnitude : distance.magnitude) * 15f, -90, 90);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void OnMove(InputValue value)
     {
+        if (RacingGameManager.Instance.isGameStopped)
+        {
+            return;
+        }
+
         float right = value.Get<float>();
 
         if (right > 0)
