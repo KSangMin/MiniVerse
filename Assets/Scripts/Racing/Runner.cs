@@ -15,7 +15,7 @@ public class Runner : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, tracks[curId].position, 0.5f);
+        transform.position = Vector3.Lerp(transform.position, tracks[curId].position, 0.4f);
     }
 
     public void OnMove(InputValue value)

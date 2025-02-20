@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
     void OnInteract(InputValue value)
     {
+        Debug.Log("플레이어 F 입력됨");
         if (value.isPressed)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.15f), interactRange);
