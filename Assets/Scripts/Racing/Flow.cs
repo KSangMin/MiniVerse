@@ -17,7 +17,6 @@ public class Flow : MonoBehaviour
             return;
         }
 
-        speed += Time.deltaTime / 20;
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector2.down * (speed + RacingGameManager.Instance.timeScore / 20) * Time.deltaTime);
     }
 }

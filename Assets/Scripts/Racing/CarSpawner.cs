@@ -24,7 +24,7 @@ public class CarSpawner : MonoBehaviour
         if (spawnTime >= spawnTimer)
         {
             spawnTime -= spawnTimer;
-            spawnTimer = Random.Range(1f, 2f);
+            spawnTimer = Random.Range(1f, 1.5f);
             GameObject c;
             
             c = Instantiate(carPrefabs[0], tracks[Random.Range(0, tracks.Count)]);

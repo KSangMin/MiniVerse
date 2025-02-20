@@ -19,7 +19,7 @@ public class RoadSpawnner : MonoBehaviour
             return;
         }
 
-        if (lastCreatedRoad.transform.localPosition.y <= -2.87f)
+        if (lastCreatedRoad.transform.localPosition.y <= -2.8f)
         {
             lastCreatedRoad = SpawnRoad();
         }
