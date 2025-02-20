@@ -1793,8 +1793,8 @@ MonoBehaviour:
     m_ActionName: UI/Progress[/Keyboard/f]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: bb3130d4-098e-439f-8c4f-c193669270e5
-    m_ActionName: UI/Avatar[/Keyboard/tab]
+    m_ActionId: 51f44791-0ff3-4ea1-a5af-56266af54a06
+    m_ActionName: Racing/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -5260,6 +5260,14 @@ PrefabInstance:
       value: "\uAC70\uC6B8\uC5D0\uC11C \uBAA8\uC2B5\uC744 \uBC14\uAFC0 \uC218 \uC788\uB2E4\uB294
         \uAC70 \uC54C\uC544?"
       objectReference: {fileID: 0}
+    - target: {fileID: 7371426778676794576, guid: 2eb1008ed0312d64c83d2f3baa9fea4b, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: "\u3134\u3141\u3139\u3147"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371426778676794576, guid: 2eb1008ed0312d64c83d2f3baa9fea4b, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: "\u3134\u3141\u3139\u3147\u3136\u3141"
+      objectReference: {fileID: 0}
     - target: {fileID: 9061324071694694956, guid: 2eb1008ed0312d64c83d2f3baa9fea4b, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -6835,7 +6843,6 @@ GameObject:
   - component: {fileID: 1472487552}
   - component: {fileID: 1472487551}
   - component: {fileID: 1472487550}
-  - component: {fileID: 1472487554}
   m_Layer: 5
   m_Name: AvatarCanvas
   m_TagString: Untagged
@@ -6946,36 +6953,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1472487554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472487548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 28f85d537693cf1478a3f4f0d9bb0474, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1485929584
 GameObject:
   m_ObjectHideFlags: 0
@@ -6989,7 +6966,7 @@ GameObject:
   - component: {fileID: 1485929586}
   m_Layer: 0
   m_Name: Mirror
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12907,7 +12884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5700525770036375664, guid: 2eb1008ed0312d64c83d2f3baa9fea4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 5700525770036375664, guid: 2eb1008ed0312d64c83d2f3baa9fea4b, type: 3}
       propertyPath: m_LocalPosition.z

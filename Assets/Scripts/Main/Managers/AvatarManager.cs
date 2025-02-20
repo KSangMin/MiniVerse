@@ -29,7 +29,7 @@ public class AvatarManager : Singleton<AvatarManager>
 
     private void Start()
     {
-        avatarBackground.SetActive(false);
+        TurnOffAvatar();
 
         ResetUI();
 
@@ -38,36 +38,19 @@ public class AvatarManager : Singleton<AvatarManager>
         blueSlider.onValueChanged.AddListener(OnBlueSliderChanged);
 
         applybutton.onClick.AddListener(Apply);
-        exitbutton.onClick.AddListener(ToggleAvatar);
-    }
-
-    void OnAvatar()
-    {
-        TurnOffAvatar();
+        exitbutton.onClick.AddListener(TurnOffAvatar);
     }
 
     public void TurnOnAvatar()
     {
         avatarBackground.SetActive(true);
+        Debug.Log("¾Æ¹ÙÅ¸ UI ÄÑÁü");
     }
-
+    
     public void TurnOffAvatar()
     {
         avatarBackground.SetActive(false);
-    }
-
-    public void ToggleAvatar()
-    {
-        avatarBackground.SetActive(!avatarBackground.activeSelf);
-
-        if(avatarBackground.activeSelf == true)
-        {
-            ResetUI();
-        }
-        else
-        {
-            
-        }
+        Debug.Log("¾Æ¹ÙÅ¸ UI ²¨Áü");
     }
 
     void ResetUI()
@@ -103,6 +86,6 @@ public class AvatarManager : Singleton<AvatarManager>
     void Apply()
     {
         player.GetComponentInChildren<SpriteRenderer>().color = curColor;
-        ToggleAvatar();
+        TurnOffAvatar();
     }
 }

@@ -34,8 +34,6 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(NPC npc)
     {
-        isDialogueStarted = true;
-
         dlgImage.sprite = npc.npcSprite.sprite;
         nameText.text = npc.npcName;
         _dialogue = npc.dialogue;
@@ -49,12 +47,18 @@ public class DialogueManager : Singleton<DialogueManager>
 
     IEnumerator ShowDialogue()
     {
-        foreach(string s in _dialogue)
+        yield return new WaitUntil(() => !isInput);
+
+        isDialogueStarted = true;
+        isInput = false;
+
+        foreach (string s in _dialogue)
         {
             dlgText.text = s;
             Debug.Log(s);
 
             yield return new WaitUntil(() => isInput);
+            yield return new WaitUntil(() => !isInput);
             isInput = false;
         }
 
@@ -78,12 +82,18 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void OnProgress(InputAction.CallbackContext context)
     {
-        if (isDialogueStarted)
+        if (!isDialogueStarted)
         {
-            if (context.started)
-            {
-                isInput = true;
-            }
+            return;
+        }
+
+        if (context.started)
+        {
+            isInput = true;
+        }
+        else if (context.canceled)
+        {
+            isInput = false;
         }
     }
 }

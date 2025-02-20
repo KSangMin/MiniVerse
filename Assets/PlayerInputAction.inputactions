@@ -20,7 +20,7 @@
                     "id": "e77d872c-668e-40a9-b908-11ff866a5f22",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 }
             ],
@@ -193,21 +193,12 @@
             "actions": [
                 {
                     "name": "Progress",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "a59a4e3c-4a9d-40ba-9738-402fdbb29d09",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Avatar",
-                    "type": "Button",
-                    "id": "6492fd5b-8936-4ffd-8adf-8775cd87b508",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -219,17 +210,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Progress",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8667c57a-9cf5-4858-9518-85ed485469a8",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Avatar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
