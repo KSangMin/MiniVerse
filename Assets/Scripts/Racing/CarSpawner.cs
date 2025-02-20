@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class CarSpawner : MonoBehaviour
 {
     public GameObject[] carPrefabs;
     public List<Sprite> cars;
@@ -11,11 +11,6 @@ public class Spawner : MonoBehaviour
     public List<Transform> tracks;
     float spawnTimer = 1f;
     float spawnTime;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
