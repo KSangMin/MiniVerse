@@ -15,6 +15,11 @@ public class Runner : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (RacingGameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         transform.position = Vector3.Lerp(transform.position, tracks[curId].position, 0.4f);
     }
 
@@ -29,6 +34,14 @@ public class Runner : MonoBehaviour
         else if (right < 0)
         {
             curId = Mathf.Max(--curId, 0);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Car"))
+        {
+            RacingGameManager.Instance.GameOver();
         }
     }
 }

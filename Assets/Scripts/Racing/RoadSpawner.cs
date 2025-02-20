@@ -14,7 +14,12 @@ public class RoadSpawnner : MonoBehaviour
 
     void Update()
     {
-        if(lastCreatedRoad.transform.localPosition.y <= -2.87f)
+        if (RacingGameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
+        if (lastCreatedRoad.transform.localPosition.y <= -2.87f)
         {
             lastCreatedRoad = SpawnRoad();
         }

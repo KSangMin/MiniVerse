@@ -12,6 +12,11 @@ public class Flow : MonoBehaviour
 
     void Update()
     {
+        if (RacingGameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 }

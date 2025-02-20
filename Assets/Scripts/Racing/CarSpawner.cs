@@ -9,15 +9,22 @@ public class CarSpawner : MonoBehaviour
     public List<Sprite> sTrucks;
     public List<Sprite> lTrucks;
     public List<Transform> tracks;
-    float spawnTimer = 1f;
+    float spawnTimer;
     float spawnTime;
 
     void Update()
     {
+        if (RacingGameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         spawnTime += Time.deltaTime;
+
         if (spawnTime >= spawnTimer)
         {
-            spawnTime -= 1f;
+            spawnTime -= spawnTimer;
+            spawnTimer = Random.Range(1f, 2f);
             GameObject c;
             
             c = Instantiate(carPrefabs[0], tracks[Random.Range(0, tracks.Count)]);
