@@ -16,7 +16,7 @@ public class MiniGame : Interactable
     private void Start()
     {
         sign.SetActive(false);
-        hScoreText.text = sceneName + "\nHighScore: " + PlayerPrefs.GetInt(GameName + "HighScore", 0);
+        hScoreText.text = GameName + "\nHighScore: " + PlayerPrefs.GetInt(GameName + "HighScore", 0);
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)

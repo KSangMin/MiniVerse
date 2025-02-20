@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/FlappyPlane.unity
-    guid: d9fb1fd163d24ce49873d9028bc545e4
+    path: Assets/Scenes/Plane.unity
+    guid: 6c42eafee3c3fe54ab059bd49019c600
   - enabled: 1
     path: Assets/Scenes/Racing.unity
     guid: a158eb3764a78a944875bfe037d3534c
