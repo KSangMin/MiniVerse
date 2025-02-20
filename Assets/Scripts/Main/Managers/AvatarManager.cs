@@ -31,6 +31,8 @@ public class AvatarManager : Singleton<AvatarManager>
     {
         TurnOffAvatar();
 
+        player.GetComponentInChildren<SpriteRenderer>().color = GameManager.Instance.avatarColor;
+
         ResetUI();
 
         redSlider.onValueChanged.AddListener(OnRedSliderChanged);
@@ -86,6 +88,7 @@ public class AvatarManager : Singleton<AvatarManager>
     void Apply()
     {
         player.GetComponentInChildren<SpriteRenderer>().color = curColor;
+        GameManager.Instance.avatarColor = curColor;
         TurnOffAvatar();
     }
 }

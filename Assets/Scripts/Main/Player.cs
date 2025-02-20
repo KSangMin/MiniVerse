@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.isRiding) RideOn(); else RideOff();
         transform.position = GameManager.Instance.playerPos;
         interactPanel.SetActive(false);
     }
@@ -107,20 +108,39 @@ public class Player : MonoBehaviour
     {
         if (value.isPressed)
         {
-            if (isRiding)
-            {
-                isRiding = false;
-                riding.GetComponent<SpriteRenderer>().sprite = null;
-                playerSprite.transform.localPosition = Vector3.zero;
-                riding.GetComponent<BoxCollider2D>().enabled = false;
-            }
-            else
-            {
-                isRiding= true;
-                riding.GetComponent<SpriteRenderer>().sprite = ridingsprite;
-                playerSprite.transform.localPosition = new Vector3(0, 0.4f, 0);
-                riding.GetComponent<BoxCollider2D>().enabled = true;
-            }
+            ToggleRide();
         }
     }
+
+    void ToggleRide()
+    {
+        if (isRiding)
+        {
+            RideOff();
+        }
+        else
+        {
+            RideOn();
+        }
+
+        GameManager.Instance.isRiding = isRiding;
+    }
+
+    void RideOn()
+    {
+        isRiding = true;
+        riding.GetComponent<SpriteRenderer>().sprite = ridingsprite;
+        playerSprite.transform.localPosition = new Vector3(0, 0.4f, 0);
+        riding.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    void RideOff()
+    {
+        isRiding = false;
+        riding.GetComponent<SpriteRenderer>().sprite = null;
+        playerSprite.transform.localPosition = Vector3.zero;
+        riding.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    
 }
