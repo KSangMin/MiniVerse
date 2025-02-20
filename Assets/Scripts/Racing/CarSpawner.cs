@@ -22,6 +22,7 @@ public class CarSpawner : MonoBehaviour
             
             c = Instantiate(carPrefabs[0], tracks[Random.Range(0, tracks.Count)]);
             c.GetComponent<SpriteRenderer>().sprite = cars[Random.Range(0, cars.Count)];
+            c.transform.SetParent(transform);
 
             //float rate = Random.Range(0, 1f);
             //if(rate < 0.7)
