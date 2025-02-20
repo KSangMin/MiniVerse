@@ -12,9 +12,16 @@ public class Player : MonoBehaviour
 
     Vector2 dir;
     [SerializeField][Range(0, 10)] int speed = 4;
+
+    public GameObject playerSprite;
+    public GameObject riding;
+    public Sprite ridingsprite;
+    bool isRiding = false;
+    public int rideSpeed = 3;
+
     [Range(0, 1f)] public float interactRange = 0.52f;
 
-    public GameObject inateractPanel;
+    public GameObject interactPanel;
 
     private void Awake()
     {
@@ -25,7 +32,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         transform.position = GameManager.Instance.playerPos;
-        inateractPanel.SetActive(false);
+        interactPanel.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -33,6 +40,7 @@ public class Player : MonoBehaviour
         if(!DialogueManager.Instance.isDialogueStarted && dir.magnitude > 0)
         {
             Vector2 newPos = (Vector2)transform.position + dir * speed * Time.deltaTime;
+            if (isRiding) newPos += dir * rideSpeed * Time.deltaTime;
             _rb.MovePosition(newPos);
         }
     }
@@ -50,7 +58,8 @@ public class Player : MonoBehaviour
             }
             _animator.SetFloat("dX", dir.x);
             _animator.SetFloat("dY", dir.y);
-            _animator.SetBool("isMoving", dir != Vector2.zero);
+            if (isRiding) _animator.SetBool("isMoving", false);
+            else _animator.SetBool("isMoving", dir != Vector2.zero);
         }
         else _animator.SetBool("isMoving", false);
     }
@@ -86,11 +95,32 @@ public class Player : MonoBehaviour
 
     public void TurnOnInteractPanel()
     {
-        inateractPanel.SetActive(true);
+        interactPanel.SetActive(true);
     }
 
     public void TurnOffInteractPanel()
     {
-        inateractPanel.SetActive(false);
+        interactPanel.SetActive(false);
+    }
+
+    void OnRide(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            if (isRiding)
+            {
+                isRiding = false;
+                riding.GetComponent<SpriteRenderer>().sprite = null;
+                playerSprite.transform.localPosition = Vector3.zero;
+                riding.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                isRiding= true;
+                riding.GetComponent<SpriteRenderer>().sprite = ridingsprite;
+                playerSprite.transform.localPosition = new Vector3(0, 0.4f, 0);
+                riding.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
     }
 }
